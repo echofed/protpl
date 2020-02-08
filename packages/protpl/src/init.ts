@@ -76,7 +76,7 @@ export class Init {
 
   private async getTpl(config) {
     const { argv } = this.options;
-    const { moduleName, projectPath } = config;
+    const { moduleName, projectName, projectPath } = config;
     const tmpDir = resolve(projectPath, `./.protpl-tmp-${Date.now()}-${Math.ceil(Math.random() * 1000000)}`);
     await ensureDir(tmpDir);
     execSync(`cd ${tmpDir};${ argv.npm || 'npm'} pack ${moduleName}`, {stdio: 'ignore'});
@@ -108,7 +108,7 @@ export class Init {
         target = target.replace(/\.protpl$/, '');
         ensureFileSync(target);
         this.formatProTpl(source, target, {
-          moduleName,
+          projectName,
         });
       } else {
         ensureFileSync(target);

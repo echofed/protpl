@@ -1,5 +1,5 @@
 {
-  "name": "protpl-ts-module",
+  "name": "protpl-lerna-ts-module",
   "version": "0.1.0",
   "files": [
     "*"

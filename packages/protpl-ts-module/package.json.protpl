@@ -1,7 +1,7 @@
 {
-  "name": "<% moduleName %>",
+  "name": "<% projectName %>",
   "version": "0.0.1",
-  "description": "<% moduleName %>",
+  "description": "<% projectName %>",
   "main": "./dist/index.js",
   "scripts": {
     "dev": "tsc --watch",

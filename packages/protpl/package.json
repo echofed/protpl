@@ -1,6 +1,6 @@
 {
   "name": "protpl",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "Project Template",
   "bin": {
     "pt": "./bin/pt.js",

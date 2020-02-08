@@ -14,6 +14,7 @@ $ p init
 ## 目前支持的模板类型
 + ts-module: 基于TypeScript的模块工程
 + lerna-ts-module: 基于Lerna的多个TypeScript模块工程
++ js-module: 使用Rollup构建的JavaScript模块工程
 
 ## 选项
 ### Init

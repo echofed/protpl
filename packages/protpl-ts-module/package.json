@@ -1,0 +1,10 @@
+{
+  "name": "protpl-ts-module",
+  "version": "0.0.1",
+  "files": [
+    "*",
+    "src"
+  ],
+  "description": "Project Template",
+  "author": "echosoar"
+}

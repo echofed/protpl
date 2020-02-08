@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/echosoar/protpl/compare/v0.2.0...v0.2.1) (2020-02-08)
+
+
+### Bug Fixes
+
+* rebuild ([80b4da3](https://github.com/echosoar/protpl/commit/80b4da3c29a0b8cbfdc8ad3753d56566e224f858))
+
+
+
+
+
 # [0.2.0](https://github.com/echosoar/protpl/compare/v0.1.0...v0.2.0) (2020-02-08)
 
 

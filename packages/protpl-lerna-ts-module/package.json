@@ -2,7 +2,7 @@
   "name": "protpl-lerna-ts-module",
   "version": "0.3.0",
   "files": [
-    "*",
+    "**/*",
     ".gitignore",
     ".prettierrc",
     ".travis.yml"

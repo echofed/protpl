@@ -2,7 +2,7 @@
   "name": "protpl-js-module",
   "version": "0.3.0",
   "files": [
-    "*",
+    "**/*",
     ".gitignore",
     ".babelrc",
     ".prettierc",

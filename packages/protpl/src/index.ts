@@ -7,7 +7,6 @@ export class ProTpl {
 
   constructor(argv) {
     this.argv = minimist(argv.slice(2));
-    console.log(this.argv, this.cwd);
   }
 
   public async start() {

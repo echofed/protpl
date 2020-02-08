@@ -86,7 +86,7 @@ class Init {
     getTpl(config) {
         return __awaiter(this, void 0, void 0, function* () {
             const { argv } = this.options;
-            const { moduleName, projectPath } = config;
+            const { moduleName, projectName, projectPath } = config;
             const tmpDir = path_1.resolve(projectPath, `./.protpl-tmp-${Date.now()}-${Math.ceil(Math.random() * 1000000)}`);
             yield fs_extra_1.ensureDir(tmpDir);
             child_process_1.execSync(`cd ${tmpDir};${argv.npm || 'npm'} pack ${moduleName}`, { stdio: 'ignore' });
@@ -116,7 +116,7 @@ class Init {
                     target = target.replace(/\.protpl$/, '');
                     fs_extra_1.ensureFileSync(target);
                     this.formatProTpl(source, target, {
-                        moduleName,
+                        projectName,
                     });
                 }
                 else {

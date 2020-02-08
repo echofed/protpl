@@ -3,5 +3,9 @@ declare const _default: {
         title: string;
         source: string;
     };
+    tsModules: {
+        title: string;
+        source: string;
+    };
 };
 export default _default;

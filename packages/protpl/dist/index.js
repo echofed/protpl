@@ -16,7 +16,6 @@ class ProTpl {
     constructor(argv) {
         this.cwd = process.cwd();
         this.argv = minimist(argv.slice(2));
-        console.log(this.argv, this.cwd);
     }
     start() {
         return __awaiter(this, void 0, void 0, function* () {

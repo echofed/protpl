@@ -2,10 +2,7 @@
   "name": "protpl-ts-module",
   "version": "0.3.1",
   "files": [
-    "**/*",
-    ".gitignore",
-    ".prettierrc",
-    ".travis.yml"
+    "**/*"
   ],
   "description": "Project Template",
   "author": "echosoar"

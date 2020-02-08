@@ -2,11 +2,7 @@
   "name": "protpl-js-module",
   "version": "0.3.1",
   "files": [
-    "**/*",
-    ".gitignore",
-    ".babelrc",
-    ".prettierc",
-    ".eslintrc"
+    "**/*"
   ],
   "description": "Project Template",
   "author": "echosoar"

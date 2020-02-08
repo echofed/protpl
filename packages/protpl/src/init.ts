@@ -104,6 +104,9 @@ export class Init {
     allFiles.forEach((filePath: string) => {
       const source = resolve(packagePath, filePath);
       let target = resolve(projectPath, filePath);
+      if (filePath.startsWith('hidden.')) {
+        target = resolve(projectPath, filePath.replace(/^hidden/, ''));
+      }
       if (source.endsWith('.protpl')) {
         target = target.replace(/\.protpl$/, '');
         ensureFileSync(target);

@@ -1,11 +1,12 @@
 {
-  "name": "protpl-lerna-ts-module",
+  "name": "protpl-js-module",
   "version": "0.2.0",
   "files": [
     "*",
     ".gitignore",
-    ".prettierrc",
-    ".travis.yml"
+    ".babelrc",
+    ".prettierc",
+    ".eslintrc"
   ],
   "description": "Project Template",
   "author": "echosoar"

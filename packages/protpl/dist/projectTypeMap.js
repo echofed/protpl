@@ -6,7 +6,11 @@ exports.default = {
         source: 'protpl-ts-module',
     },
     tsModules: {
-        title: 'TypeScript Modules By Lerna',
+        title: 'TypeScript Modules Manage By Lerna',
         source: 'protpl-lerna-ts-module',
+    },
+    jsModules: {
+        title: 'Javascript Module Build By Rollup',
+        source: 'protpl-js-module',
     },
 };

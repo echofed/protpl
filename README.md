@@ -1,6 +1,14 @@
-# protpl
-
-帮助你快速创建各种项目工程！
+<p align="center">
+  <b>protpl</b>
+  <br />
+  <span>帮助你快速创建各种项目工程！</span>
+  <br>
+  <a href="https://www.npmjs.org/package/protpl"><img src="https://img.shields.io/npm/v/protpl.svg?style=flat" alt="npm"></a> <a href="https://travis-ci.org/echosoar/protpl"><img src="https://travis-ci.org/echosoar/protpl.svg?branch=master" alt="travis"></a>
+  <br>
+  <img src="./docs/usage.gif" width="600" height="300" alt="Protpl">
+  <br>
+  
+</p>
 
 ## 使用
 ```shell

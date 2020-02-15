@@ -97,16 +97,13 @@ export class Init {
       },
     );
     const packagePath = resolve(tmpDir, 'package');
-    let allFiles = await Globby(['*', '*/**/*.*'], { cwd: packagePath });
+    let allFiles = await Globby(['.?*', '*/**/*', '*/**/.*'], { cwd: packagePath });
     if (allFiles.indexOf('package.json.ptotpl') !== -1) {
       allFiles = allFiles.filter((file: string) => file !== 'package.json');
     }
     allFiles.forEach((filePath: string) => {
       const source = resolve(packagePath, filePath);
       let target = resolve(projectPath, filePath);
-      if (filePath.startsWith('hidden.')) {
-        target = resolve(projectPath, filePath.replace(/^hidden/, ''));
-      }
       if (source.endsWith('.protpl')) {
         target = target.replace(/\.protpl$/, '');
         ensureFileSync(target);

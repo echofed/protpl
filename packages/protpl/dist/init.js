@@ -105,16 +105,13 @@ class Init {
                 file: path_1.resolve(tmpDir, tgzFileName),
             });
             const packagePath = path_1.resolve(tmpDir, 'package');
-            let allFiles = yield Globby(['*', '*/**/*.*'], { cwd: packagePath });
+            let allFiles = yield Globby(['.?*', '*/**/*', '*/**/.*'], { cwd: packagePath });
             if (allFiles.indexOf('package.json.ptotpl') !== -1) {
                 allFiles = allFiles.filter((file) => file !== 'package.json');
             }
             allFiles.forEach((filePath) => {
                 const source = path_1.resolve(packagePath, filePath);
                 let target = path_1.resolve(projectPath, filePath);
-                if (filePath.startsWith('hidden.')) {
-                    target = path_1.resolve(projectPath, filePath.replace(/^hidden/, ''));
-                }
                 if (source.endsWith('.protpl')) {
                     target = target.replace(/\.protpl$/, '');
                     fs_extra_1.ensureFileSync(target);

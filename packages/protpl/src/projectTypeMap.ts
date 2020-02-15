@@ -11,4 +11,8 @@ export default {
     title: 'Javascript Module Build By Rollup',
     source: 'protpl-js-module',
   },
+  reactModule: {
+    title: 'React Component Module',
+    source: 'protpl-react-component-module',
+  },
 };

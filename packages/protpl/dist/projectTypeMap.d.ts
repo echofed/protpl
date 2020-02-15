@@ -11,5 +11,9 @@ declare const _default: {
         title: string;
         source: string;
     };
+    reactModule: {
+        title: string;
+        source: string;
+    };
 };
 export default _default;

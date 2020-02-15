@@ -67,19 +67,27 @@ export class Init {
       }
     }
 
-    const authorInput = await prompt({
-      type: 'input',
-      name: 'name',
-      value: '',
-      message: 'What is your author name?',
-    });
-
     return {
       moduleName,
       projectName,
       projectPath,
-      author: authorInput.name,
+      author: await this.getUserName(),
     };
+  }
+
+  private async getUserName() {
+    let defaultAuthorName = '';
+    try {
+      defaultAuthorName = execSync(`git config --get user.name`).toString().replace(/\n/img, '');
+    // tslint:disable-next-line: no-empty
+    } catch (e) { }
+    const authorInput = await prompt({
+      type: 'input',
+      name: 'name',
+      value: defaultAuthorName,
+      message: 'What is your author name?',
+    });
+    return authorInput.name;
   }
 
   private async getTpl(config) {
@@ -105,11 +113,18 @@ export class Init {
       },
     );
     const packagePath = resolve(tmpDir, 'package');
-    let allFiles = await Globby(['.?*', '*/**/*', '*/**/.*'], { cwd: packagePath });
+    const allFiles = await Globby(['.*', '*', '*/**/*', '*/**/.*'], { cwd: packagePath });
+    let isPkgTpl = false;
     if (allFiles.indexOf('package.json.ptotpl') !== -1) {
-      allFiles = allFiles.filter((file: string) => file !== 'package.json');
+      isPkgTpl = true;
     }
     allFiles.forEach((filePath: string) => {
+      if (filePath === 'package.json' && isPkgTpl) {
+        return;
+      }
+      if (filePath === 'CHANGELOG.md') {
+        return;
+      }
       const source = resolve(packagePath, filePath);
       let target = resolve(projectPath, filePath);
       if (source.endsWith('.protpl')) {

@@ -76,18 +76,28 @@ class Init {
                     projectName = projectNameInput.name;
                 }
             }
-            const authorInput = yield prompt({
-                type: 'input',
-                name: 'name',
-                value: '',
-                message: 'What is your author name?',
-            });
             return {
                 moduleName,
                 projectName,
                 projectPath,
-                author: authorInput.name,
+                author: yield this.getUserName(),
             };
+        });
+    }
+    getUserName() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let defaultAuthorName = '';
+            try {
+                defaultAuthorName = child_process_1.execSync(`git config --get user.name`).toString().replace(/\n/img, '');
+            }
+            catch (e) { }
+            const authorInput = yield prompt({
+                type: 'input',
+                name: 'name',
+                value: defaultAuthorName,
+                message: 'What is your author name?',
+            });
+            return authorInput.name;
         });
     }
     getTpl(config) {
@@ -112,11 +122,18 @@ class Init {
                 file: path_1.resolve(tmpDir, tgzFileName),
             });
             const packagePath = path_1.resolve(tmpDir, 'package');
-            let allFiles = yield Globby(['.?*', '*/**/*', '*/**/.*'], { cwd: packagePath });
+            const allFiles = yield Globby(['.*', '*', '*/**/*', '*/**/.*'], { cwd: packagePath });
+            let isPkgTpl = false;
             if (allFiles.indexOf('package.json.ptotpl') !== -1) {
-                allFiles = allFiles.filter((file) => file !== 'package.json');
+                isPkgTpl = true;
             }
             allFiles.forEach((filePath) => {
+                if (filePath === 'package.json' && isPkgTpl) {
+                    return;
+                }
+                if (filePath === 'CHANGELOG.md') {
+                    return;
+                }
                 const source = path_1.resolve(packagePath, filePath);
                 let target = path_1.resolve(projectPath, filePath);
                 if (source.endsWith('.protpl')) {

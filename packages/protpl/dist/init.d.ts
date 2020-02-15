@@ -3,6 +3,7 @@ export declare class Init {
     constructor(options: any);
     start(): Promise<void>;
     private getConfig;
+    private getUserName;
     private getTpl;
     private formatProTpl;
 }

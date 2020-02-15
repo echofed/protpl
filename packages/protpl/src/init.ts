@@ -67,16 +67,24 @@ export class Init {
       }
     }
 
+    const authorInput = await prompt({
+      type: 'input',
+      name: 'name',
+      value: '',
+      message: 'What is your author name?',
+    });
+
     return {
       moduleName,
       projectName,
       projectPath,
+      author: authorInput.name,
     };
   }
 
   private async getTpl(config) {
     const { argv } = this.options;
-    const { moduleName, projectName, projectPath } = config;
+    const { moduleName, projectName, author, projectPath } = config;
     const tmpDir = resolve(projectPath, `./.protpl-tmp-${Date.now()}-${Math.ceil(Math.random() * 1000000)}`);
     await ensureDir(tmpDir);
     execSync(`cd ${tmpDir};${ argv.npm || 'npm'} pack ${moduleName}`, {stdio: 'ignore'});
@@ -109,6 +117,7 @@ export class Init {
         ensureFileSync(target);
         this.formatProTpl(source, target, {
           projectName,
+          author,
         });
       } else {
         ensureFileSync(target);

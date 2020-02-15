@@ -13,7 +13,7 @@
     "flow": "flow check"
   },
   "keywords": [],
-  "author": "",
+  "author": "<% author %>",
   "license": "MIT",
   "files": [
     "build"

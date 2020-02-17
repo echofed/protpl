@@ -14,6 +14,7 @@ const Globby = require("globby");
 const child_process_1 = require("child_process");
 const path_1 = require("path");
 const projectTypeMap_1 = require("./projectTypeMap");
+const checkVersion_1 = require("./checkVersion");
 const tar = require("tar");
 const { prompt, Confirm, Select } = require('enquirer');
 class Init {
@@ -23,7 +24,11 @@ class Init {
     start() {
         return __awaiter(this, void 0, void 0, function* () {
             const config = yield this.getConfig();
-            yield this.getTpl(config);
+            const checkObj = new checkVersion_1.CheckVersion();
+            const checkRes = yield checkObj.check();
+            if (checkRes) {
+                yield this.getTpl(config);
+            }
         });
     }
     getConfig() {

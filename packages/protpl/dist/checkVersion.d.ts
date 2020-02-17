@@ -2,7 +2,7 @@ export declare class CheckVersion {
     private spinner;
     result: boolean;
     constructor();
-    check(): Promise<unknown>;
+    check(): Promise<boolean>;
     private checkNode;
     private checkCli;
 }

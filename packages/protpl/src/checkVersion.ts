@@ -1,8 +1,8 @@
 import * as semver from 'semver';
 import * as chalk from 'chalk';
 import * as ora from 'ora';
-import axios from 'axios';
 import log from './log';
+import { execSync } from 'child_process';
 
 const pkg = require('../package.json')
 
@@ -38,93 +38,42 @@ export class CheckVersion {
     }
   }
   // 检查cli工具版本
-  private async checkCli() {
+  private checkCli() {
     try {
-      let res = await axios({
-        url: 'https://registry.npmjs.org/protpl',
-        method: 'get',
-        timeout: 1000
-      });
-      return new Promise((resolve, reject) => {
-        if (res.status === 200) {
-          this.spinner.text = chalk.green('protpl: checking protpl version succeed, its the latest version');
-          this.spinner.succeed();
+      let latestVersion = execSync(`npm view protpl dist-tags --json`).toString();
+      if (latestVersion) {
+        let latestVerObj = JSON.parse(latestVersion);
+        this.spinner.text = chalk.green('protpl: checking protpl version succeed, its the latest version');
+        this.spinner.succeed();
 
-          let localVer = pkg.version;
-          let latestVer = res.data['dist-tags'].latest;
+        let localVer = pkg.version;
+        let latestVer = latestVerObj.latest;
 
-          if (semver.lt(localVer, latestVer)) {
-            log.tips();
-            log.tips(chalk.blue('  A newer version of protpl is available.'));
-            log.tips();
-            log.tips(`  latest:    ${chalk.green(latestVer)}`);
-            log.tips(`  installed:    ${chalk.red(localVer)}`);
-            log.tips('  update protpl latest: npm update -g protpl');
-            log.tips()
-          }
-          resolve(true)
-        } else {
-          log.tips(chalk.red(`     ${res.statusText}: ${res.status}`));
-          log.tips(chalk.red(`     ${res.data.error}`));
-          reject(true)
+        if (semver.lt(localVer, latestVer)) {
+          log.tips();
+          log.tips(chalk.blue('  A newer version of protpl is available.'));
+          log.tips();
+          log.tips(`  latest:    ${chalk.green(latestVer)}`);
+          log.tips(`  installed:    ${chalk.red(localVer)}`);
+          log.tips('  update protpl latest: npm update -g protpl');
+          log.tips()
         }
-      })
+      } else {
+        this.spinner.text = chalk.white('protpl: checking protpl version failed');
+        this.spinner.fail();
+        log.tips(chalk.red(`  can not find the latest vertion, please view the site: https://registry.npmjs.org/protpl`));
+      }
     } catch (err) {
       if (err) {
-        let res = err.response;
-
         this.spinner.text = chalk.white('protpl:checking protpl version failed, error message as follows:');
         this.spinner.fail();
 
         log.tips();
 
-        if (res) {
-          log.tips(chalk.red(`     ${res.statusText}: ${res.status}`));
-          log.tips(chalk.red(`     ${res.data.error}`));
-        } else {
-          log.tips(chalk.red(`     ${err.message}`));
-        }
+        log.tips(chalk.red(`     ${err.message}`));
         log.tips();
-        return true;
       }
     }
-    // .then(res => {
-    //   if (res.status === 200) {
-    //     this.spinner.text = chalk.green('protpl: checking protpl version succeed, its the latest version');
-    //     this.spinner.succeed();
-
-    //     let localVer = pkg.version;
-    //     let latestVer = res.data['dist-tags'].latest;
-
-    //     if (semver.lt(localVer, latestVer)) {
-    //       log.tips();
-    //       log.tips(chalk.blue('  A newer version of protpl is available.'));
-    //       log.tips();
-    //       log.tips(`  latest:    ${chalk.green(latestVer)}`);
-    //       log.tips(`  installed:    ${chalk.red(localVer)}`);
-    //       log.tips('  update protpl latest: npm update -g protpl');
-    //       log.tips()
-    //     }
-    //     return true;
-    //   }
-    // })
-    // .catch(err => {
-    //   if (err) {
-    //     let res = err.response;
-
-    //     this.spinner.text = chalk.white('protpl:checking protpl version failed, error message as follows:');
-    //     this.spinner.fail();
-
-    //     log.tips();
-
-    //     if (res) {
-    //       log.tips(chalk.red(`     ${res.statusText}: ${res.headers.status}`));
-    //     } else {
-    //       log.tips(chalk.red(`     ${err.message}`));
-    //     }
-    //     log.tips();
-    //     return true;
-    //   }
-    // })
+    return true;
   }
 }

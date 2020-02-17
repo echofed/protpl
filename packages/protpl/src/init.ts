@@ -3,6 +3,8 @@ import * as Globby from 'globby';
 import { execSync } from 'child_process';
 import { resolve } from 'path';
 import ProjectTypeMap from './projectTypeMap';
+import { CheckVersion } from './checkVersion';
+
 import * as tar from 'tar';
 const { prompt, Confirm, Select } = require('enquirer');
 export class Init {
@@ -13,7 +15,11 @@ export class Init {
 
   public async start() {
     const config = await this.getConfig();
-    await this.getTpl(config);
+    const checkObj = new CheckVersion();
+    const checkRes = await checkObj.check();
+    if (checkRes) {
+      await this.getTpl(config);
+    }
   }
 
   private async getConfig() {

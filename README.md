@@ -23,6 +23,7 @@ $ p init
 + ts-module: 基于TypeScript的模块工程
 + lerna-ts-module: 基于Lerna的多个TypeScript模块工程
 + js-module: 使用Rollup构建的JavaScript模块工程
++ react-component-module: 使用Rollup构建的React Component模块工程
 
 ## 选项
 ### Init

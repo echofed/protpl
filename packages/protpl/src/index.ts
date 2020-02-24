@@ -1,6 +1,9 @@
 import * as minimist from 'minimist';
 import * as commandLineUsage from 'command-line-usage';
 import { Init } from './init';
+
+const pkg = require('../package.json');
+
 export class ProTpl {
   private argv: any;
   private cwd = process.cwd();
@@ -16,9 +19,22 @@ export class ProTpl {
       case 'i':
       case 'init':
         return this.initProject(commandList);
+      case 'v':
+      case 'version':
+        return this.showVersion(pkg.version);
       default:
         return this.displayHelp();
     }
+  }
+  // 展示当前版本
+  private async showVersion(version: string) {
+    const commandList = {
+      header: 'Version:',
+      content: [
+        { name: 'latest version', summary: version },
+      ],
+    };
+    console.log(commandLineUsage(commandList));
   }
 
   private async initProject(command) {

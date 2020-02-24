@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const minimist = require("minimist");
 const commandLineUsage = require("command-line-usage");
 const init_1 = require("./init");
+const pkg = require('../package.json');
 class ProTpl {
     constructor(argv) {
         this.cwd = process.cwd();
@@ -25,9 +26,23 @@ class ProTpl {
                 case 'i':
                 case 'init':
                     return this.initProject(commandList);
+                case 'v':
+                case 'version':
+                    return this.showVersion(pkg.version);
                 default:
                     return this.displayHelp();
             }
+        });
+    }
+    showVersion(version) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const commandList = {
+                header: 'Version:',
+                content: [
+                    { name: 'latest version', summary: version },
+                ],
+            };
+            console.log(commandLineUsage(commandList));
         });
     }
     initProject(command) {

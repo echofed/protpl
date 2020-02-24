@@ -3,6 +3,7 @@ export declare class ProTpl {
     private cwd;
     constructor(argv: any);
     start(): Promise<void>;
+    private showVersion;
     private initProject;
     private displayHelp;
 }

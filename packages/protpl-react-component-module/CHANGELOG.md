@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/echosoar/protpl/compare/v0.5.1...v0.6.0) (2020-07-04)
+
+
+### Features
+
+* add react module author ([bde0eff](https://github.com/echosoar/protpl/commit/bde0effb148c4a82f7eb242e87a9a400c7588f71))
+
+
+
+
+
 # [0.5.0](https://github.com/echosoar/protpl/compare/v0.4.0...v0.5.0) (2020-02-15)
 
 

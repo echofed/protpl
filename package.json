@@ -1,7 +1,7 @@
 {
   "name": "protpl",
   "description": "Project Template",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/lodash": "^4.14.119",

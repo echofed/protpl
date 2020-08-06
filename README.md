@@ -20,9 +20,15 @@ $ p init
 ```
 
 ## 目前支持的模板类型
-+ ts-module: 基于TypeScript的模块工程
-+ lerna-ts-module: 基于Lerna的多个TypeScript模块工程
-+ js-module: 使用Rollup构建的JavaScript模块工程
+
+
+| name | desc |
+| --- | --- |
+| TypeScript Module | 基于 TypeScript 的NPM模块工程 |
+| TypeScript Modules Manage By Lerna | 基于 Lerna、TypeScript 的多个NPM模块工程 |
+| TypeScript React App By Snowpack | 基于 Snowpack、TypeScript 的React应用工程 |
+| Javascript Module Build By Rollup | 基于 Rollup 的JS/Node模块工程 |
+| React Component Module | 基于 TypeScript 的React模块工程 |
 
 ## 选项
 ### Init

@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProTpl = void 0;
 const minimist = require("minimist");
 const commandLineUsage = require("command-line-usage");
 const init_1 = require("./init");

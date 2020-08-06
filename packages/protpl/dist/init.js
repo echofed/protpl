@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Init = void 0;
 const fs_extra_1 = require("fs-extra");
 const Globby = require("globby");
 const child_process_1 = require("child_process");

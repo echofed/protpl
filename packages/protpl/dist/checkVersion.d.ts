@@ -1,6 +1,6 @@
 export declare class CheckVersion {
-    private spinner;
     result: boolean;
+    private spinner;
     constructor();
     check(): Promise<boolean>;
     private checkNode;

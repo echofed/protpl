@@ -15,4 +15,8 @@ export default {
     title: 'React Component Module',
     source: 'protpl-react-component-module',
   },
+  tsReactSnowPack: {
+    title: 'TypeScript React App By Snowpack',
+    source: 'protpl-react-ts-snowpack',
+  },
 };

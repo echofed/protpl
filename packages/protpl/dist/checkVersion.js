@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CheckVersion = void 0;
 const semver = require("semver");
 const chalk = require("chalk");
 const ora = require("ora");
@@ -21,7 +22,7 @@ class CheckVersion {
         log_1.default.tips('start checking ..');
         this.spinner = ora({
             text: 'checking the protpl and node version',
-            color: 'blue'
+            color: 'blue',
         }).start();
     }
     check() {
@@ -41,13 +42,13 @@ class CheckVersion {
     }
     checkCli() {
         try {
-            let latestVersion = child_process_1.execSync(`npm view protpl dist-tags --json`).toString();
+            const latestVersion = child_process_1.execSync(`npm view protpl dist-tags --json`).toString();
             if (latestVersion) {
-                let latestVerObj = JSON.parse(latestVersion);
+                const latestVerObj = JSON.parse(latestVersion);
                 this.spinner.text = chalk.green('protpl: checking protpl version succeed, its the latest version');
                 this.spinner.succeed();
-                let localVer = pkg.version;
-                let latestVer = latestVerObj.latest;
+                const localVer = pkg.version;
+                const latestVer = latestVerObj.latest;
                 if (semver.lt(localVer, latestVer)) {
                     log_1.default.tips();
                     log_1.default.tips(chalk.blue('  A newer version of protpl is available.'));

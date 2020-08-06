@@ -19,6 +19,6 @@
       "conventionalCommits": true
     }
   },
-  "npmClient": "npm",
+  "npmClient": "cnpm",
   "version": "0.6.0"
 }

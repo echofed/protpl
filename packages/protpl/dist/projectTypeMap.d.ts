@@ -15,5 +15,9 @@ declare const _default: {
         title: string;
         source: string;
     };
+    tsReactSnowPack: {
+        title: string;
+        source: string;
+    };
 };
 export default _default;

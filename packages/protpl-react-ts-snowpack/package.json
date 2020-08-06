@@ -1,0 +1,9 @@
+{
+  "name": "protpl-react-ts-snowpack",
+  "version": "0.6.0",
+  "files": [
+    "**/*"
+  ],
+  "description": "Project Template",
+  "author": "echosoar"
+}
